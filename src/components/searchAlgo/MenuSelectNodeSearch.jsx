@@ -1,4 +1,5 @@
 import React from 'react'
+import Tooltip from '../Tooltip'
 
 export const MenuSelectNodeSearch = ({ node, setNode }) => {
   const handleChange = (e) => {
@@ -11,6 +12,7 @@ export const MenuSelectNodeSearch = ({ node, setNode }) => {
         Starting Node
       </h3>
       <div className="relative">
+        <Tooltip content="Choose the starting node for graph traversal" position="top" className="w-full">
         <select
           value={node ?? ''}
           onChange={handleChange}
@@ -23,6 +25,7 @@ export const MenuSelectNodeSearch = ({ node, setNode }) => {
             </option>
           ))}
         </select>
+        </Tooltip>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

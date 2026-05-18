@@ -4,6 +4,7 @@ import SpeedSlider from '../SpeedSlider.jsx'
 import CodePanel from '../visualizer/CodePanel'
 import { useStepPlayback } from '../visualizer/useStepPlayback'
 import ComplexityCard from '../ComplexityCard'
+import Tooltip from '../Tooltip'
 
 import * as linear from '../../algorithms/searching/linearSearchSteps'
 import * as binary from '../../algorithms/searching/binarySearchSteps'
@@ -292,6 +293,7 @@ export default function Visualizer() {
                     <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400/80">
                       Algorithm
                     </p>
+                    <Tooltip content="Pick a search algorithm" position="top" className="w-full">
                     <select
                       value={algorithm}
                       onChange={handleAlgorithmChange}
@@ -301,12 +303,14 @@ export default function Visualizer() {
                       <option value="linearSearch">Linear Search</option>
                       <option value="binarySearch">Binary Search</option>
                     </select>
+                    </Tooltip>
                   </div>
 
                   <div>
                     <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-400/80">
                       Target Value
                     </p>
+                    <Tooltip content="Enter the value to search for" position="top" className="w-full">
                     <input
                       type="number"
                       value={target}
@@ -315,6 +319,7 @@ export default function Visualizer() {
                       className="w-full bg-slate-900/80 text-white text-sm border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:border-cyan-500 transition disabled:opacity-50"
                       placeholder="Target Value"
                     />
+                    </Tooltip>
                   </div>
 
                   <div className="rounded-xl border border-slate-700/50 bg-slate-900/50 px-3 py-2">
@@ -328,10 +333,11 @@ export default function Visualizer() {
                   </div>
 
                   <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1">
+                    <Tooltip content={hasSteps ? 'Restart the visualization' : 'Start visualization'} position="top">
                     <button
                       onClick={handleSearch}
                       disabled={isRunning || !target}
-                      className="text-sm font-bold rounded-xl bg-cyan-600 px-6 py-3 text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-cyan-500 hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] disabled:cursor-not-allowed disabled:opacity-50"
+                      className="w-full text-sm font-bold rounded-xl bg-cyan-600 px-6 py-3 text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-cyan-500 hover:shadow-[0_0_15px_rgba(6,182,212,0.4)] disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       {isRunning
                         ? 'Searching...'
@@ -339,13 +345,16 @@ export default function Visualizer() {
                           ? 'Restart Search'
                           : 'Start Search'}
                     </button>
+                    </Tooltip>
+                    <Tooltip content="Reset array to original state" position="top">
                     <button
                       onClick={handleReset}
                       disabled={isRunning}
-                      className="text-sm font-bold rounded-xl bg-slate-700 px-6 py-3 text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-600 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
+                      className="w-full text-sm font-bold rounded-xl bg-slate-700 px-6 py-3 text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-600 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       Reset Array
                     </button>
+                    </Tooltip>
                   </div>
                 </div>
               </div>
@@ -370,29 +379,35 @@ export default function Visualizer() {
                     </div>
                   </div>
                   <div className="grid grid-cols-3 gap-3">
+                    <Tooltip content={isPlaying ? 'Pause' : 'Start Visualization'} position="top">
                     <button
                       type="button"
                       onClick={isPlaying ? pausePlayback : playPlayback}
                       disabled={isComplete && !isPlaying}
-                      className="rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-sm font-medium text-slate-100 transition hover:border-cyan-500 hover:text-cyan-200 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="w-full rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-sm font-medium text-slate-100 transition hover:border-cyan-500 hover:text-cyan-200 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       {isPlaying ? 'Pause' : 'Play'}
                     </button>
+                    </Tooltip>
+                    <Tooltip content="Advance one step forward" position="top">
                     <button
                       type="button"
                       onClick={stepForward}
                       disabled={isPlaying || isComplete}
-                      className="rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-sm font-medium text-slate-100 transition hover:border-cyan-500 hover:text-cyan-200 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="w-full rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-sm font-medium text-slate-100 transition hover:border-cyan-500 hover:text-cyan-200 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       Step
                     </button>
+                    </Tooltip>
+                    <Tooltip content="Replay from the beginning" position="top">
                     <button
                       type="button"
                       onClick={replayPlayback}
-                      className="rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-sm font-medium text-slate-100 transition hover:border-cyan-500 hover:text-cyan-200"
+                      className="w-full rounded-xl border border-slate-700 bg-slate-800 px-3 py-2 text-sm font-medium text-slate-100 transition hover:border-cyan-500 hover:text-cyan-200"
                     >
                       Replay
                     </button>
+                    </Tooltip>
                   </div>
                 </div>
               )}

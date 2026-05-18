@@ -1,4 +1,5 @@
 import React from 'react'
+import Tooltip from '../Tooltip'
 
 const ChevronIcon = () => (
   <svg
@@ -32,6 +33,7 @@ export const MenuSelectNodesShortestPath = ({
       </h3>
       <div className="space-y-3">
         <div className="relative">
+          <Tooltip content="Choose the source node" position="top" className="w-full">
           <select
             value={source ?? ''}
             onChange={(e) => setSource(e.target.value || null)}
@@ -44,9 +46,11 @@ export const MenuSelectNodesShortestPath = ({
               </option>
             ))}
           </select>
+          </Tooltip>
           <ChevronIcon />
         </div>
         <div className="relative">
+          <Tooltip content="Choose the target node" position="top" className="w-full">
           <select
             value={target ?? ''}
             onChange={(e) => setTarget(e.target.value || null)}
@@ -59,6 +63,7 @@ export const MenuSelectNodesShortestPath = ({
               </option>
             ))}
           </select>
+          </Tooltip>
           <ChevronIcon />
         </div>
       </div>

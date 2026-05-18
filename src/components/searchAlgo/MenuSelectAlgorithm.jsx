@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import Tooltip from '../Tooltip'
 
 export const MenuSelectAlgorithm = ({ algorithm, setAlgorithm }) => {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -34,18 +35,22 @@ export const MenuSelectAlgorithm = ({ algorithm, setAlgorithm }) => {
         Algorithm
       </h3>
       <div className="flex flex-col gap-2">
+        <Tooltip content="Select Breadth-First Search" position="top" className="w-full">
         <button
           onClick={() => handleSelect('bfs')}
           className={getButtonClass('bfs')}
         >
           Breadth-First Search (BFS)
         </button>
+        </Tooltip>
+        <Tooltip content="Select Depth-First Search" position="top" className="w-full">
         <button
           onClick={() => handleSelect('dfs')}
           className={getButtonClass('dfs')}
         >
           Depth-First Search (DFS)
         </button>
+        </Tooltip>
       </div>
     </div>
   )

@@ -1,4 +1,5 @@
 import React from 'react'
+import Tooltip from '../Tooltip'
 
 export const MenuSetAlgoKadane = ({
   arrayInput,
@@ -13,26 +14,32 @@ export const MenuSetAlgoKadane = ({
       </h3>
 
       <div className="space-y-3">
-        <textarea
-          value={arrayInput}
-          onChange={(e) => setArrayInput(e.target.value)}
-          placeholder="-2,1,-3,4,-1,2,1,-5,4"
-          className="w-full h-28 resize-none rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-white outline-none focus:border-cyan-500"
-        />
+        <Tooltip content="Enter comma-separated integers to visualize Kadane's algorithm" position="right" className="w-full">
+          <textarea
+            value={arrayInput}
+            onChange={(e) => setArrayInput(e.target.value)}
+            placeholder="-2,1,-3,4,-1,2,1,-5,4"
+            className="w-full h-28 resize-none rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-white outline-none focus:border-cyan-500"
+          />
+        </Tooltip>
 
-        <button
-          onClick={onVisualize}
-          className="w-full rounded-xl bg-cyan-500 py-3 font-bold text-black transition hover:bg-cyan-400"
-        >
-          Visualize Kadane
-        </button>
+        <Tooltip content="Start Visualization" position="top" className="w-full">
+          <button
+            onClick={onVisualize}
+            className="w-full rounded-xl bg-cyan-500 py-3 font-bold text-black transition hover:bg-cyan-400"
+          >
+            Visualize Kadane
+          </button>
+        </Tooltip>
 
-        <button
-          onClick={onReset}
-          className="w-full text-sm font-bold py-3 px-4 rounded-xl transition-all duration-300 bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:text-white"
-        >
-          Reset
-        </button>
+        <Tooltip content="Reset visualization and input" position="top" className="w-full">
+          <button
+            onClick={onReset}
+            className="w-full text-sm font-bold py-3 px-4 rounded-xl transition-all duration-300 bg-slate-800 text-slate-300 border border-slate-700 hover:bg-slate-700 hover:text-white"
+          >
+            Reset
+          </button>
+        </Tooltip>
       </div>
     </div>
   )

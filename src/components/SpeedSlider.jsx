@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import Box from '@mui/material/Box'
 import Slider from '@mui/material/Slider'
 import clickSound from '../assets/click.wav'
+import Tooltip from './Tooltip'
 const audio = new Audio(clickSound)
 audio.volume = 0.2
 
@@ -67,6 +68,7 @@ const SpeedSlider = memo(function SpeedSlider({
   }
 
   return (
+    <Tooltip content="Adjust animation speed" position="top" className="w-full">
     <Box
       sx={{
         // 1. "Glassmorphism" container
@@ -153,6 +155,7 @@ const SpeedSlider = memo(function SpeedSlider({
         SPEED: {value.toFixed(1)}x
       </p>
     </Box>
+    </Tooltip>
   )
 })
 

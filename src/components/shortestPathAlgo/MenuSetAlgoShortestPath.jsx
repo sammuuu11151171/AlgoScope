@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
+import Tooltip from '../Tooltip'
 
 export const MenuSetAlgoShortestPath = ({ algorithm, setAlgorithm }) => {
   const [searchParams, setSearchParams] = useSearchParams()
@@ -28,6 +29,7 @@ export const MenuSetAlgoShortestPath = ({ algorithm, setAlgorithm }) => {
         Algorithm
       </h3>
       <div className="relative">
+        <Tooltip content="Choose a shortest path algorithm to visualize" position="top" className="w-full">
         <select
           value={algorithm ?? ''}
           onChange={handleChange}
@@ -38,6 +40,7 @@ export const MenuSetAlgoShortestPath = ({ algorithm, setAlgorithm }) => {
           <option value="bellmanford">Bellman-Ford</option>
           <option value="floydwarshall">Floyd–Warshall</option>
         </select>
+        </Tooltip>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
