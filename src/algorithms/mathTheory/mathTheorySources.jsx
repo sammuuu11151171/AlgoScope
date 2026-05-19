@@ -113,7 +113,9 @@ export const getGCDSource = (language) =>
   euclideanGCDSources[language]?.code ?? euclideanGCDSources.javascript.code
 
 export const resolveGCDLine = (language, lineKey) =>
-  (euclideanGCDSources[language] ?? euclideanGCDSources.javascript).lineMap?.[lineKey]
+  (euclideanGCDSources[language] ?? euclideanGCDSources.javascript).lineMap?.[
+    lineKey
+  ]
 
 // ─── FAST EXPONENTIATION ─────────────────────────────────────────────────────
 

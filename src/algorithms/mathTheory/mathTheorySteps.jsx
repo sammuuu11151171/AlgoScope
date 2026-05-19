@@ -6,7 +6,8 @@ import { createStep } from '../../lib/utils'
 
 export function generateEuclideanGCDSteps(a, b) {
   const steps = []
-  let x = a, y = b
+  let x = a,
+    y = b
 
   steps.push(
     createStep({
@@ -63,7 +64,8 @@ export function generateEuclideanGCDSteps(a, b) {
 
 export function generateNaiveGCDSteps(a, b) {
   const steps = []
-  let x = a, y = b
+  let x = a,
+    y = b
 
   steps.push(
     createStep({
@@ -269,13 +271,33 @@ export function generateBitOpSteps(a, b, operation) {
   let result
   let opLabel
   switch (operation) {
-    case 'AND':  result = a & b;  opLabel = 'AND';  break
-    case 'OR':   result = a | b;  opLabel = 'OR';   break
-    case 'XOR':  result = a ^ b;  opLabel = 'XOR';  break
-    case 'NOT':  result = (~a) & 0xff; opLabel = 'NOT'; break
-    case 'LSHIFT': result = (a << 1) & 0xff; opLabel = 'LEFT SHIFT'; break
-    case 'RSHIFT': result = a >> 1; opLabel = 'RIGHT SHIFT'; break
-    default: result = a & b; opLabel = 'AND'
+    case 'AND':
+      result = a & b
+      opLabel = 'AND'
+      break
+    case 'OR':
+      result = a | b
+      opLabel = 'OR'
+      break
+    case 'XOR':
+      result = a ^ b
+      opLabel = 'XOR'
+      break
+    case 'NOT':
+      result = ~a & 0xff
+      opLabel = 'NOT'
+      break
+    case 'LSHIFT':
+      result = (a << 1) & 0xff
+      opLabel = 'LEFT SHIFT'
+      break
+    case 'RSHIFT':
+      result = a >> 1
+      opLabel = 'RIGHT SHIFT'
+      break
+    default:
+      result = a & b
+      opLabel = 'AND'
   }
 
   const bitsResult = toBits(result)
@@ -293,12 +315,17 @@ export function generateBitOpSteps(a, b, operation) {
 
   for (let i = 0; i < 8; i++) {
     let msg
-    if (operation === 'AND')    msg = `Bit ${7-i}: ${bitsA[i]} AND ${bitsB[i]} = ${bitsResult[i]}`
-    else if (operation === 'OR')  msg = `Bit ${7-i}: ${bitsA[i]} OR ${bitsB[i]} = ${bitsResult[i]}`
-    else if (operation === 'XOR') msg = `Bit ${7-i}: ${bitsA[i]} XOR ${bitsB[i]} = ${bitsResult[i]}`
-    else if (operation === 'NOT') msg = `Bit ${7-i}: NOT ${bitsA[i]} = ${bitsResult[i]}`
-    else if (operation === 'LSHIFT') msg = `Bit ${7-i}: shift left → ${bitsResult[i]}`
-    else msg = `Bit ${7-i}: shift right → ${bitsResult[i]}`
+    if (operation === 'AND')
+      msg = `Bit ${7 - i}: ${bitsA[i]} AND ${bitsB[i]} = ${bitsResult[i]}`
+    else if (operation === 'OR')
+      msg = `Bit ${7 - i}: ${bitsA[i]} OR ${bitsB[i]} = ${bitsResult[i]}`
+    else if (operation === 'XOR')
+      msg = `Bit ${7 - i}: ${bitsA[i]} XOR ${bitsB[i]} = ${bitsResult[i]}`
+    else if (operation === 'NOT')
+      msg = `Bit ${7 - i}: NOT ${bitsA[i]} = ${bitsResult[i]}`
+    else if (operation === 'LSHIFT')
+      msg = `Bit ${7 - i}: shift left → ${bitsResult[i]}`
+    else msg = `Bit ${7 - i}: shift right → ${bitsResult[i]}`
 
     steps.push(
       createStep({
@@ -307,7 +334,12 @@ export function generateBitOpSteps(a, b, operation) {
         array: bitsA,
         indices: [i],
         message: msg,
-        variables: { bitIndex: 7 - i, aBit: bitsA[i], bBit: bitsB[i], resultBit: bitsResult[i] },
+        variables: {
+          bitIndex: 7 - i,
+          aBit: bitsA[i],
+          bBit: bitsB[i],
+          resultBit: bitsResult[i],
+        },
         duration: 600,
       })
     )

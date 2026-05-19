@@ -2,13 +2,14 @@ import React from 'react'
 import StatusDisplay from '../StatusDisplay'
 
 // Shows the two numbers as labelled bars that shrink each step
-export const CanvasGCD = ({ currentStep, hasSteps, inputA, inputB }) => {
+export const CanvasGCD = ({ currentStep, inputA, inputB }) => {
   const a = currentStep?.variables?.a ?? inputA ?? 0
   const b = currentStep?.variables?.b ?? inputB ?? 0
   const result = currentStep?.variables?.result ?? null
   const remainder = currentStep?.variables?.remainder ?? null
   const isComplete = currentStep?.type === 'complete'
-  const message = currentStep?.message ?? 'Enter two numbers and click Visualize.'
+  const message =
+    currentStep?.message ?? 'Enter two numbers and click Visualize.'
 
   const maxVal = Math.max(inputA ?? 1, inputB ?? 1, 1)
   const barA = Math.max(4, (a / maxVal) * 100)
@@ -54,11 +55,15 @@ export const CanvasGCD = ({ currentStep, hasSteps, inputA, inputB }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
           <div className="rounded-xl bg-slate-800/60 p-5 border border-slate-700">
             <p className="text-slate-400 text-sm">A</p>
-            <h2 className="text-3xl font-bold text-cyan-400 mt-2 font-mono">{a}</h2>
+            <h2 className="text-3xl font-bold text-cyan-400 mt-2 font-mono">
+              {a}
+            </h2>
           </div>
           <div className="rounded-xl bg-slate-800/60 p-5 border border-slate-700">
             <p className="text-slate-400 text-sm">B</p>
-            <h2 className="text-3xl font-bold text-purple-400 mt-2 font-mono">{b}</h2>
+            <h2 className="text-3xl font-bold text-purple-400 mt-2 font-mono">
+              {b}
+            </h2>
           </div>
           <div className="rounded-xl bg-slate-800/60 p-5 border border-slate-700">
             <p className="text-slate-400 text-sm">

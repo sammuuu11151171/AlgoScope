@@ -84,7 +84,8 @@ const ALGORITHMS = [
   },
   {
     title: 'Math Theory',
-    description: 'Visualize GCD, Fast Exponentiation, and Bit Manipulation step-by-step.',
+    description:
+      'Visualize GCD, Fast Exponentiation, and Bit Manipulation step-by-step.',
     color: 'bg-slate-900/50 border-indigo-500/30 hover:border-indigo-400',
     link: '/math-theory',
     image: KadaneImg, // or create/import a proper Math image if you have one

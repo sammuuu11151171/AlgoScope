@@ -77,15 +77,15 @@ function App() {
       ),
     },
     {
-  path: '/math-theory',
-  element: (
-    <Suspense fallback={<PageLoader />}>
-      <AppLayout>
-        <MathTheory />
-      </AppLayout>
-    </Suspense>
-  ),
-},
+      path: '/math-theory',
+      element: (
+        <Suspense fallback={<PageLoader />}>
+          <AppLayout>
+            <MathTheory />
+          </AppLayout>
+        </Suspense>
+      ),
+    },
     {
       path: '/spath',
       element: (
