@@ -61,7 +61,7 @@ createRoot(document.getElementById('root')).render(
             color: 'var(--clerk-input-text) !important',
             backdropFilter: 'blur(8px)',
           },
-          
+
           formFieldLabel: {
             color: 'var(--clerk-text)',
           },
@@ -98,7 +98,7 @@ createRoot(document.getElementById('root')).render(
             color: 'var(--clerk-primary)',
             '&:hover': {
               color: 'var(--clerk-text)',
-            }
+            },
           },
 
           socialButtonsIconButton: {
@@ -110,7 +110,7 @@ createRoot(document.getElementById('root')).render(
             '&:hover': {
               background: 'var(--clerk-social-hover) !important',
               transform: 'translateY(-1px)',
-            }
+            },
           },
 
           socialButtonsBlockButtonText: {
@@ -148,14 +148,12 @@ createRoot(document.getElementById('root')).render(
           formButtonPrimary: {
             background: 'var(--clerk-button-bg) !important',
             borderColor: 'transparent',
-            boxShadow: 'none !important',
             color: 'var(--clerk-text)',
-            outline: 'none',
             transition: 'all 0.2s ease-in-out',
 
             '&:focus': {
-              boxShadow: 'none !important',
-              outline: 'none',
+              boxShadow:
+                '0 0 0 2px var(--clerk-bg), 0 0 0 4px var(--clerk-primary) !important',
             },
             '&:hover': {
               background: 'var(--clerk-button-hover) !important',
