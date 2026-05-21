@@ -546,7 +546,6 @@ export default function Visualizer() {
           </div>
         </div>
       </div>
-
     </div>
   )
 }
