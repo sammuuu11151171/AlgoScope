@@ -189,7 +189,7 @@ const SearchBar = () => {
     }
 
     const searchResults = fuse.search(val)
-    
+
     const sortedResults = [...searchResults].sort((a, b) => {
       if (sortBy === 'name') {
         return a.item.name.localeCompare(b.item.name)
@@ -198,7 +198,7 @@ const SearchBar = () => {
       }
       return 0
     })
-    
+
     setResults(sortedResults)
     setSelectedIndex(0)
   }
@@ -346,14 +346,18 @@ const SearchBar = () => {
                       onChange={(e) => {
                         setSortBy(e.target.value)
                         const searchResults = fuse.search(query)
-                        const sortedResults = [...searchResults].sort((a, b) => {
-                          if (e.target.value === 'name') {
-                            return a.item.name.localeCompare(b.item.name)
-                          } else if (e.target.value === 'category') {
-                            return a.item.category.localeCompare(b.item.category)
+                        const sortedResults = [...searchResults].sort(
+                          (a, b) => {
+                            if (e.target.value === 'name') {
+                              return a.item.name.localeCompare(b.item.name)
+                            } else if (e.target.value === 'category') {
+                              return a.item.category.localeCompare(
+                                b.item.category
+                              )
+                            }
+                            return 0
                           }
-                          return 0
-                        })
+                        )
                         setResults(sortedResults)
                       }}
                       className="bg-slate-800 border border-slate-600 text-slate-300 text-xs px-2 py-1 rounded-lg cursor-pointer outline-none"
