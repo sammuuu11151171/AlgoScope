@@ -358,3 +358,80 @@ export function generateBitOpSteps(a, b, operation) {
 
   return steps
 }
+
+// ─────────────────────────────────────────────
+// SIEVE OF ERATOSTHENES
+// ─────────────────────────────────────────────
+
+export function generateSieveSteps(n) {
+  const steps = []
+  const isPrime = new Array(n + 1).fill(true)
+  if (n >= 0) isPrime[0] = false
+  if (n >= 1) isPrime[1] = false
+
+  // Helper to extract primes found so far
+  const getPrimesList = (arr) => {
+    const list = []
+    for (let i = 2; i < arr.length; i++) {
+      if (arr[i]) list.push(i)
+    }
+    return list
+  }
+
+  steps.push(
+    createStep({
+      lineKey: 'start',
+      type: 'start',
+      array: [...isPrime],
+      message: `Initialize isPrime array from 0 to ${n} with true. Mark 0 and 1 as false (not prime).`,
+      variables: { i: null, j: null, primesCount: 0 },
+      duration: 800,
+    })
+  )
+
+  for (let i = 2; i * i <= n; i++) {
+    steps.push(
+      createStep({
+        lineKey: 'checkPrime',
+        type: 'compare',
+        array: [...isPrime],
+        indices: [i],
+        message: `Check if ${i} is prime: ${isPrime[i] ? 'Yes, search and mark its multiples' : 'No, already marked composite'}`,
+        variables: { i, j: null, primesCount: getPrimesList(isPrime).length },
+        duration: 750,
+      })
+    )
+
+    if (isPrime[i]) {
+      for (let j = i * i; j <= n; j += i) {
+        isPrime[j] = false
+        steps.push(
+          createStep({
+            lineKey: 'markFalse',
+            type: 'swap',
+            array: [...isPrime],
+            indices: [j],
+            message: `Mark multiple of ${i}: ${j} as composite (false).`,
+            variables: { i, j, primesCount: getPrimesList(isPrime).length },
+            duration: 600,
+          })
+        )
+      }
+    }
+  }
+
+  const finalPrimes = getPrimesList(isPrime)
+
+  steps.push(
+    createStep({
+      lineKey: 'result',
+      type: 'complete',
+      array: [...isPrime],
+      message: `Completed! Found ${finalPrimes.length} primes: [${finalPrimes.join(', ')}]`,
+      variables: { i: null, j: null, primesCount: finalPrimes.length },
+      duration: 1000,
+    })
+  )
+
+  return steps
+}
