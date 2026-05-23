@@ -30,12 +30,16 @@ const getCellClassName = (node) => {
         ? 'bg-red-500'
         : node.isWall
           ? 'bg-black'
-          : node.path
-            ? 'bg-yellow-400'
-            : node.visited
-              ? 'bg-cyan-500'
-              : node.isWeighted
-                ? 'bg-orange-500'
+          : node.isWeighted
+            ? node.path
+              ? 'bg-orange-500 ring-1 ring-yellow-300'
+              : node.visited
+                ? 'bg-orange-400'
+                : 'bg-orange-500'
+            : node.path
+              ? 'bg-yellow-400'
+              : node.visited
+                ? 'bg-cyan-500'
                 : 'bg-[#0f172a]'
   }`
 }
