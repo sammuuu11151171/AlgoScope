@@ -1,14 +1,6 @@
 import React from 'react'
 import AlgoCard from './AlgoCard'
 import { Hero } from './hero/Hero'
-import SortingImg from '../assets/new-home-images/array.png'
-import SearchingImg from '../assets/new-home-images/traversal.png'
-import LinearSearchImg from '../assets/new-home-images/search.png'
-import GraphAlgoImg from '../assets/new-home-images/shortestPath.png'
-import KadaneImg from '../assets/new-home-images/KadaneImg.png'
-import MooreVotingImg from '../assets/new-home-images/MooreVoting.png'
-import BacktrackingImg from '../assets/new-home-images/KadaneImg.png'
-import adt from '../assets/new-home-images/adt.png'
 import { motion } from 'framer-motion'
 
 const containerVariants = {
@@ -28,32 +20,24 @@ const ALGORITHMS = [
     description: 'Visualizing Bubble, Merge, Quick, Heap, and Shell Sort.',
     color: 'theme-card border-blue-500/30 hover:border-blue-400',
     link: '/sort',
-    image: SortingImg,
-    imageAlt: 'Array elements being rearranged for sorting algorithms',
   },
   {
     title: 'Searching',
     description: 'Explore BFS, DFS, and other traversal methods.',
     color: 'theme-card border-cyan-500/30 hover:border-cyan-400',
     link: '/search',
-    image: SearchingImg,
-    imageAlt: 'Graph traversal nodes and paths for searching algorithms',
   },
   {
     title: 'Graph Algorithms',
     description: 'Dijkstra, Floyd-Warshall, and Topological Sort.',
     color: 'theme-card border-purple-500/30 hover:border-purple-400',
     link: '/spath',
-    image: GraphAlgoImg,
-    imageAlt: 'Weighted graph path visualization for shortest path algorithms',
   },
   {
     title: 'Array Search',
     description: 'Linear and Binary search visualization.',
     color: 'theme-card border-orange-500/30 hover:border-orange-400',
     link: '/ldssearch',
-    image: LinearSearchImg,
-    imageAlt: 'Array search visualization highlighting a target value',
   },
   {
     title: 'Abstract Data Types',
@@ -61,17 +45,12 @@ const ALGORITHMS = [
       'Stacks, Queues, Binary Trees, Binary Heaps, and Priority Queues.',
     color: 'theme-card border-emerald-500/30 hover:border-emerald-400',
     link: '/adt',
-    image: adt,
-    imageAlt:
-      'Stacks, Queues, Binary Trees, Binary Heaps, and Priority Queues data structures',
   },
   {
     title: 'Kadane Algorithm',
     description: 'Visualize Maximum Subarray Sum using Kadane’s Algorithm.',
     color: 'theme-card border-pink-500/30 hover:border-pink-400',
     link: '/kadane',
-    image: KadaneImg,
-    imageAlt: 'Kadane algorithm visualization for maximum subarray sum',
   },
   {
     title: "Moore's Voting Algorithm",
@@ -79,9 +58,6 @@ const ALGORITHMS = [
       "Visualize the Moore's Voting Algorithm for finding the majority element.",
     color: 'theme-card border-green-500/30 hover:border-green-400',
     link: '/moore-voting',
-    image: MooreVotingImg,
-    imageAlt:
-      "Moore's Voting algorithm visualization for finding the majority element",
   },
   {
     title: 'Math Theory',
@@ -89,8 +65,6 @@ const ALGORITHMS = [
       'Visualize GCD, Fast Exponentiation, and Bit Manipulation step-by-step.',
     color: 'theme-card border-indigo-500/30 hover:border-indigo-400',
     link: '/math-theory',
-    image: KadaneImg,
-    imageAlt: 'Mathematical algorithms visualization',
   },
   {
     title: 'Backtracking',
@@ -98,9 +72,6 @@ const ALGORITHMS = [
       'N-Queens and Sudoku Solver — watch the algorithm place, conflict, and undo in real time.',
     color: 'bg-slate-900/50 border-rose-500/30 hover:border-rose-400',
     link: '/backtracking',
-    image: BacktrackingImg,
-    imageAlt:
-      'N-Queens chessboard with queens placed and backtracking steps highlighted',
   },
 ]
 
@@ -133,8 +104,6 @@ export const Home = () => {
                 description={algo.description}
                 color={algo.color}
                 link={algo.link}
-                image={algo.image}
-                imageAlt={algo.imageAlt}
               />
             ))}
           </motion.div>
