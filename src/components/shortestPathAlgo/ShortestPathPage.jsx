@@ -200,9 +200,7 @@ export const ShortestPathPage = () => {
             },
           ].map(({ step, label }) => {
             const done =
-              (viewMode === 'network' &&
-                step === '1' &&
-                nodeIds.length > 0) ||
+              (viewMode === 'network' && step === '1' && nodeIds.length > 0) ||
               ((viewMode === 'network' ? step === '2' : step === '1') &&
                 algorithm) ||
               ((viewMode === 'network' ? step === '3' : step === '2') &&
