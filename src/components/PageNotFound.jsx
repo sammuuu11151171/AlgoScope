@@ -58,8 +58,10 @@ export default function NotFound() {
     if (!ctx) return
 
     const resize = () => {
-      canvas.width = canvas.offsetWidth
-      canvas.height = canvas.offsetHeight
+      const dpr = window.devicePixelRatio || 1
+      canvas.width = Math.floor(canvas.offsetWidth * dpr)
+      canvas.height = Math.floor(canvas.offsetHeight * dpr)
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
     }
 
     resize()
